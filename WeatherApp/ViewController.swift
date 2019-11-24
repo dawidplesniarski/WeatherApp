@@ -7,14 +7,21 @@
 //
 
 import UIKit
+//import Foundation
 
 class ViewController: UIViewController {
+    
+    let jsonParser = JsonParser()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func confirmCityButtonPressed(_ sender: Any) {
+        //JsonParser.loadData()
+        //print("weather",jsonParser.temperature)
+    }
+    
 
 }
 

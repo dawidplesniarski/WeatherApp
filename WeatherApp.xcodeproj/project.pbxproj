@@ -78,12 +78,12 @@
 				6F2030822387300A00707C4B /* AppDelegate.swift */,
 				6F2030842387300A00707C4B /* SceneDelegate.swift */,
 				6F2030862387300A00707C4B /* ViewController.swift */,
+				6F8F9F9C238892DF0000BB26 /* WeatherViewController.swift */,
+				6FB5A5A1238963F4000F2CC5 /* JsonParser.swift */,
 				6F2030882387300A00707C4B /* Main.storyboard */,
 				6F20308B2387300B00707C4B /* Assets.xcassets */,
 				6F20308D2387300B00707C4B /* LaunchScreen.storyboard */,
 				6F2030902387300B00707C4B /* Info.plist */,
-				6F8F9F9C238892DF0000BB26 /* WeatherViewController.swift */,
-				6FB5A5A1238963F4000F2CC5 /* JsonParser.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Foundation
-
 
 
 struct Weather: Codable{
@@ -26,6 +24,7 @@ struct Main: Codable{
 
 class JsonParser: UIViewController {
 
+    var temperature = 0.0
     
     
     func loadData(){
@@ -40,20 +39,16 @@ class JsonParser: UIViewController {
                 //let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
                 //let weather = Weather(json: json as! [String : Any])
                 let weather = try JSONDecoder().decode(Weather.self, from: data)
-                print(weather.main.temp)
+                //self.weatherVC.temperature = weather.main.temp
+                self.temperature = weather.main.temp
+                print("JSON PARSER", self.temperature)
                // print(json)
             }catch let jsonErr{
                 print(jsonErr)
             }
-            
         }.resume()
-        
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
 
 }/**let jsonUrlString = "https://api.openweathermap.org/data/2.5/weather?q=Tarnow,pl&APPID=749561a315b14523a8f5f1ef95e45864&units=metric"
 guard let url = URL(string: jsonUrlString) else { return }

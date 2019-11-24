@@ -26,6 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
+                                    <action selector="confirmCityButtonPressed:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="WTB-s4-tSL"/>
                                     <segue destination="CJV-tx-gff" kind="show" id="IL0-iG-Ys1"/>
                                 </connections>
                             </button>
@@ -45,14 +46,34 @@
                     <view key="view" contentMode="scaleToFill" id="hOr-4D-rMU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXe-ko-cPv">
+                                <rect key="frame" x="184" y="123" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="test:" destination="CJV-tx-gff" eventType="touchUpInside" id="SlS-Ot-8B9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7w-AT-WUQ">
+                                <rect key="frame" x="146" y="44" width="123" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CbA-rg-XOr"/>
                     </view>
                     <navigationItem key="navigationItem" id="bGB-kk-2hy"/>
+                    <connections>
+                        <outlet property="testLabel" destination="a7w-AT-WUQ" id="kVI-RW-ka2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EW4-u7-8ye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="115"/>
+            <point key="canvasLocation" x="942.02898550724649" y="114.50892857142857"/>
         </scene>
     </scenes>
 </document>
