@@ -10,15 +10,26 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
-    @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var pressureLabel: UILabel!
+    @IBOutlet weak var cityNameLabel: UILabel!
+    
+    var userCityName: String = "Krakow"
+    
+    
+    
     
     let jsonParser = JsonParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        jsonParser.loadData()
+        jsonParser.loadData(name: userCityName)
         run(after: 1){
-            self.testLabel.text = String(self.jsonParser.temperature)
+            self.tempLabel.text = String(self.jsonParser.temperature)
+            self.humidityLabel.text = String(self.jsonParser.humidity)
+            self.pressureLabel.text = String(self.jsonParser.pressure)
+            self.cityNameLabel.text = self.userCityName
         }
     }
 

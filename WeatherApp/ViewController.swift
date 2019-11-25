@@ -11,17 +11,24 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var typeCity: UITextField!
+    var cityName:String = ""
     let jsonParser = JsonParser()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    @IBAction func confirmCityButtonPressed(_ sender: Any) {
-        //JsonParser.loadData()
-        //print("weather",jsonParser.temperature)
-    }
     
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "mainSegue"){
+            let weatherVC = segue.destination as! WeatherViewController
+            weatherVC.userCityName = typeCity.text ?? "Warszawa"
+        }
+
+    }
 
 }
 

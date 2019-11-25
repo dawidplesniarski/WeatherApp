@@ -21,51 +21,34 @@ struct Main: Codable{
     let humidity:Int
 }
 
+struct Array{
+
+}
+
 
 class JsonParser: UIViewController {
 
     var temperature = 0.0
+    var pressure:Int = 0
+    var humidity:Int = 0
+    var city:String = ""
     
     
-    func loadData(){
-        let jsonUrlString = "https://api.openweathermap.org/data/2.5/weather?q=Tarnow,pl&APPID=749561a315b14523a8f5f1ef95e45864&units=metric"
+    func loadData(name: String){
+        let jsonUrlString = "https://api.openweathermap.org/data/2.5/weather?q=\(name),pl&APPID=749561a315b14523a8f5f1ef95e45864&units=metric"
         guard let url = URL(string: jsonUrlString) else { return }
 
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             guard let data = data else { return }
-            //let dataAsString = String(data: data, encoding: .utf8)
-            //print(dataAsString ?? "")
             do{
-                //let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                //let weather = Weather(json: json as! [String : Any])
                 let weather = try JSONDecoder().decode(Weather.self, from: data)
-                //self.weatherVC.temperature = weather.main.temp
                 self.temperature = weather.main.temp
-                print("JSON PARSER", self.temperature)
-               // print(json)
+                self.pressure = weather.main.pressure
+                self.humidity = weather.main.humidity
+                self.city = weather.name
             }catch let jsonErr{
                 print(jsonErr)
             }
         }.resume()
     }
-
-
-}/**let jsonUrlString = "https://api.openweathermap.org/data/2.5/weather?q=Tarnow,pl&APPID=749561a315b14523a8f5f1ef95e45864&units=metric"
-guard let url = URL(string: jsonUrlString) else { return }
-
-URLSession.shared.dataTask(with: url) { (data, response, err) in
-    guard let data = data else { return }
-    //let dataAsString = String(data: data, encoding: .utf8)
-    //print(dataAsString ?? "")
-    do{
-        //let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-        //let weather = Weather(json: json as! [String : Any])
-        let weatherJSON = try JSONDecoder().decode(Weather.self, from: data)
-        print(weatherJSON.name)
-        
-       // print(json)
-    }catch let jsonErr{
-        print(jsonErr)
-    }
-    
-}.resume()*/
+}
