@@ -14,8 +14,12 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
-    var userCityName: String = "Krakow"
+    var userCityName: String = "Warszawa"
+    var weatherIcon:String = ""
+    var weatherDescription:String = ""
+    
     
     
     
@@ -29,6 +33,7 @@ class WeatherViewController: UIViewController {
             self.tempLabel.text = String(self.jsonParser.temperature)
             self.humidityLabel.text = String(self.jsonParser.humidity)
             self.pressureLabel.text = String(self.jsonParser.pressure)
+            self.descriptionLabel.text = self.jsonParser.weatherDescription
             self.cityNameLabel.text = self.userCityName
         }
     }
