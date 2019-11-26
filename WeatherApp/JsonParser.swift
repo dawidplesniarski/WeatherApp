@@ -52,7 +52,6 @@ class JsonParser: UIViewController {
                 self.humidity = weatherObj.main.humidity
                 self.city = weatherObj.name
                 self.responseCode = weatherObj.cod
-                print(self.responseCode)
                 
                 for weatherCounter in weatherObj.weather{
                     self.weatherIcon = weatherCounter.icon

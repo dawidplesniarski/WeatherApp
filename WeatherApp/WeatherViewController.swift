@@ -31,6 +31,7 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.weatherBackgroundImageView.image = UIImage(named: "clear_sky_background")
         jsonParser.loadData(name: userCityName)
         run(after: 1){
             if(self.jsonParser.responseCode == 200){
@@ -40,7 +41,7 @@ class WeatherViewController: UIViewController {
             self.descriptionLabel.text = self.jsonParser.weatherDescription
             self.cityNameLabel.text = self.userCityName
             self.weatherIconImageView.image = UIImage(named: self.jsonParser.weatherIcon)
-                if(self.jsonParser.weatherDescription.contains("mist")){
+                if(self.jsonParser.weatherDescription.contains("mist") || self.jsonParser.weatherDescription.contains("fog")){
                     self.weatherBackgroundImageView.image = UIImage(named: "mist_background")
                 }else if(self.jsonParser.weatherDescription.contains("rain")){
                     self.weatherBackgroundImageView.image = UIImage(named: "rain_background")
@@ -67,6 +68,9 @@ class WeatherViewController: UIViewController {
         }
     }
     
+    @IBAction func onBackPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
 }
