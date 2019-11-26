@@ -15,6 +15,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var weatherIconImageView: UIImageView!
+    
     
     var userCityName: String = "Warszawa"
     var weatherIcon:String = ""
@@ -35,6 +37,7 @@ class WeatherViewController: UIViewController {
             self.pressureLabel.text = String(self.jsonParser.pressure)
             self.descriptionLabel.text = self.jsonParser.weatherDescription
             self.cityNameLabel.text = self.userCityName
+            self.weatherIconImageView.image = UIImage(named: self.jsonParser.weatherIcon)
         }
     }
 
