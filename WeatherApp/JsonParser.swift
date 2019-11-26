@@ -13,6 +13,7 @@ struct Weather: Codable{
     let cod:Int
     let name:String
     let main:Main
+    let weather:[WeatherArray]
 }
 
 struct Main: Codable{
@@ -21,8 +22,9 @@ struct Main: Codable{
     let humidity:Int
 }
 
-struct Array{
-
+struct WeatherArray: Codable{
+    let description:String
+    let icon:String
 }
 
 
@@ -32,6 +34,9 @@ class JsonParser: UIViewController {
     var pressure:Int = 0
     var humidity:Int = 0
     var city:String = ""
+    var weatherIcon:String = ""
+    var weatherDescription:String = ""
+    var responseCode:Int = 404
     
     
     func loadData(name: String){
@@ -41,11 +46,20 @@ class JsonParser: UIViewController {
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             guard let data = data else { return }
             do{
-                let weather = try JSONDecoder().decode(Weather.self, from: data)
-                self.temperature = weather.main.temp
-                self.pressure = weather.main.pressure
-                self.humidity = weather.main.humidity
-                self.city = weather.name
+                let weatherObj = try JSONDecoder().decode(Weather.self, from: data)
+                self.temperature = weatherObj.main.temp
+                self.pressure = weatherObj.main.pressure
+                self.humidity = weatherObj.main.humidity
+                self.city = weatherObj.name
+                self.responseCode = weatherObj.cod
+                print(self.responseCode)
+                
+                for weatherCounter in weatherObj.weather{
+                    self.weatherIcon = weatherCounter.icon
+                    self.weatherDescription = weatherCounter.description
+                }
+
+                
             }catch let jsonErr{
                 print(jsonErr)
             }
