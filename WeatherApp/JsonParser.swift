@@ -39,8 +39,8 @@ class JsonParser: UIViewController {
     var responseCode:Int = 404
     
     
-    func loadData(name: String){
-        let jsonUrlString = "https://api.openweathermap.org/data/2.5/weather?q=\(name),pl&APPID=749561a315b14523a8f5f1ef95e45864&units=metric"
+    func loadData(city: String, country: String){
+        let jsonUrlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city),\(country)&APPID=749561a315b14523a8f5f1ef95e45864&units=metric"
         guard let url = URL(string: jsonUrlString) else { return }
 
         URLSession.shared.dataTask(with: url) { (data, response, err) in
@@ -52,7 +52,6 @@ class JsonParser: UIViewController {
                 self.humidity = weatherObj.main.humidity
                 self.city = weatherObj.name
                 self.responseCode = weatherObj.cod
-                print(self.responseCode)
                 
                 for weatherCounter in weatherObj.weather{
                     self.weatherIcon = weatherCounter.icon
