@@ -25,9 +25,10 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var descriptionBlurEffect: UIVisualEffectView!
     @IBOutlet weak var backButtonBlurEffect: UIVisualEffectView!
     
-    var userCityName: String = "Warszawa"
+    var userCityName:String = "Warszawa"
     var weatherIcon:String = ""
     var weatherDescription:String = ""
+    var userCountryName:String = "PL"
     
     
     
@@ -38,12 +39,12 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         itemsRadius()
-        jsonParser.loadData(name: userCityName)
+        jsonParser.loadData(city: userCityName, country: userCountryName)
         run(after: 1){
             if(self.jsonParser.responseCode == 200){
-            self.tempLabel.text = String(self.jsonParser.temperature)
-            self.humidityLabel.text = String(self.jsonParser.humidity)
-            self.pressureLabel.text = String(self.jsonParser.pressure)
+            self.tempLabel.text = String(self.jsonParser.temperature) + "°C"
+            self.humidityLabel.text = String(self.jsonParser.humidity) + "%"
+            self.pressureLabel.text = String(self.jsonParser.pressure) + "hPa"
             self.descriptionLabel.text = self.jsonParser.weatherDescription
             self.cityNameLabel.text = self.userCityName
             self.weatherIconImageView.image = UIImage(named: self.jsonParser.weatherIcon)

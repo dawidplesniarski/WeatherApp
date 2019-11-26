@@ -64,11 +64,20 @@
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQp-QH-Fyl">
+                                <rect key="frame" x="93" y="331" width="229" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="sRp-Rm-ZpA"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ZNt-SB-iJQ"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="countriesPickerView" destination="mQp-QH-Fyl" id="7ym-X7-vhb"/>
                         <outlet property="submitButtonBlurEffect" destination="ncN-UG-3ux" id="Vqe-8G-6sn"/>
                         <outlet property="typeCity" destination="d6B-vH-A1e" id="Qd6-md-YwX"/>
                         <outlet property="typeCityBlurEffect" destination="4l5-TC-oL5" id="PxP-1F-aXR"/>
