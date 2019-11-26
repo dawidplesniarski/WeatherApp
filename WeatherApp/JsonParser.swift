@@ -36,6 +36,7 @@ class JsonParser: UIViewController {
     var city:String = ""
     var weatherIcon:String = ""
     var weatherDescription:String = ""
+    var responseCode:Int = 404
     
     
     func loadData(name: String){
@@ -50,6 +51,8 @@ class JsonParser: UIViewController {
                 self.pressure = weatherObj.main.pressure
                 self.humidity = weatherObj.main.humidity
                 self.city = weatherObj.name
+                self.responseCode = weatherObj.cod
+                print(self.responseCode)
                 
                 for weatherCounter in weatherObj.weather{
                     self.weatherIcon = weatherCounter.icon

@@ -32,12 +32,16 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         jsonParser.loadData(name: userCityName)
         run(after: 1){
+            if(self.jsonParser.responseCode == 200){
             self.tempLabel.text = String(self.jsonParser.temperature)
             self.humidityLabel.text = String(self.jsonParser.humidity)
             self.pressureLabel.text = String(self.jsonParser.pressure)
             self.descriptionLabel.text = self.jsonParser.weatherDescription
             self.cityNameLabel.text = self.userCityName
             self.weatherIconImageView.image = UIImage(named: self.jsonParser.weatherIcon)
+            }else{
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 
