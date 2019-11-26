@@ -17,7 +17,13 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var weatherIconImageView: UIImageView!
     @IBOutlet weak var weatherBackgroundImageView: UIImageView!
-    
+    @IBOutlet weak var cityNameBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var tempBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var humidityBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var pressureBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var iconBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var descriptionBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var backButtonBlurEffect: UIVisualEffectView!
     
     var userCityName: String = "Warszawa"
     var weatherIcon:String = ""
@@ -31,7 +37,7 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.weatherBackgroundImageView.image = UIImage(named: "clear_sky_background")
+        itemsRadius()
         jsonParser.loadData(name: userCityName)
         run(after: 1){
             if(self.jsonParser.responseCode == 200){
@@ -70,6 +76,24 @@ class WeatherViewController: UIViewController {
     
     @IBAction func onBackPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func itemsRadius(){
+        cityNameBlurEffect.layer.cornerRadius = 10
+        cityNameBlurEffect.clipsToBounds = true
+        tempBlurEffect.layer.cornerRadius = 10
+        tempBlurEffect.clipsToBounds = true
+        humidityBlurEffect.layer.cornerRadius = 10
+        humidityBlurEffect.clipsToBounds = true
+        pressureBlurEffect.layer.cornerRadius = 10
+        pressureBlurEffect.clipsToBounds = true
+        iconBlurEffect.layer.cornerRadius = 10
+        iconBlurEffect.clipsToBounds = true
+        descriptionBlurEffect.layer.cornerRadius = 10
+        descriptionBlurEffect.clipsToBounds = true
+        backButtonBlurEffect.layer.cornerRadius = 10
+        backButtonBlurEffect.clipsToBounds = true
+        
     }
     
     
