@@ -115,5 +115,4 @@ class WeatherViewController: UIViewController {
         return today_string
     }
     
-    
 }
