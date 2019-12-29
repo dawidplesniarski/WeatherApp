@@ -55,7 +55,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>MontserratAlternates-ExtraLight.otf</string>
+		<string>MontserratAlternates-Thin.otf</string>
 		<string>Montserrat-Regular.otf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>

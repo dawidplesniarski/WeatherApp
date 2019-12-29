@@ -19,7 +19,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var countriesPickerView: UIPickerView!
     
     var cityName:String = ""
-    var countryName:String = ""
+    var countryName:String = "PL"
     let jsonParser = JsonParser()
 
     override func viewDidLoad() {

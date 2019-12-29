@@ -17,6 +17,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var weatherIconImageView: UIImageView!
     @IBOutlet weak var weatherBackgroundImageView: UIImageView!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var cityNameBlurEffect: UIVisualEffectView!
     @IBOutlet weak var tempBlurEffect: UIVisualEffectView!
     @IBOutlet weak var humidityBlurEffect: UIVisualEffectView!
@@ -24,21 +25,21 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var iconBlurEffect: UIVisualEffectView!
     @IBOutlet weak var descriptionBlurEffect: UIVisualEffectView!
     @IBOutlet weak var backButtonBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var timeBlurEffect: UIVisualEffectView!
     
     var userCityName:String = "Warszawa"
     var weatherIcon:String = ""
     var weatherDescription:String = ""
     var userCountryName:String = "PL"
-    
-    
-    
-    
-    
+
+    let numberToMonth = [1:"January",2:"February",3:"March",4:"April",5:"May",6:"June",7:"July",8:"August",9:"September",10:"October",11:"November",12:"Decenmber"]
+    var currentDate:String = ""
     let jsonParser = JsonParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         itemsRadius()
+        timeLabel.text = String(getTodayString())
         jsonParser.loadData(city: userCityName, country: userCountryName)
         run(after: 1){
             if(self.jsonParser.responseCode == 200){
@@ -94,8 +95,24 @@ class WeatherViewController: UIViewController {
         descriptionBlurEffect.clipsToBounds = true
         backButtonBlurEffect.layer.cornerRadius = 10
         backButtonBlurEffect.clipsToBounds = true
-        
+        timeBlurEffect.layer.cornerRadius = 10
+        timeBlurEffect.clipsToBounds = true
     }
     
+    func getTodayString() -> String{
+
+        let date = Date()
+        let calender = Calendar.current
+        let components = calender.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
+
+        let month = components.month
+        let day = components.day
+        let hour = components.hour
+        let minute = components.minute
+
+        let today_string = String(day!) + "-" + String(numberToMonth[month!]!) + " " + String(hour!)  + ":" + String(minute!)
+
+        return today_string
+    }
     
 }
