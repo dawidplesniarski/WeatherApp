@@ -26,22 +26,33 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var descriptionBlurEffect: UIVisualEffectView!
     @IBOutlet weak var backButtonBlurEffect: UIVisualEffectView!
     @IBOutlet weak var timeBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var tableView: UITableView!
     
     var userCityName:String = "Warszawa"
     var weatherIcon:String = ""
     var weatherDescription:String = ""
     var userCountryName:String = "PL"
+    
+    var forecastArray:[(temp:Double,icon:String,description:String)] = []
 
     let numberToMonth = [1:"January",2:"February",3:"March",4:"April",5:"May",6:"June",7:"July",8:"August",9:"September",10:"October",11:"November",12:"Decenmber"]
     var currentDate:String = ""
     let jsonParser = JsonParser()
+    let forecastParser = ForecastParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         itemsRadius()
         timeLabel.text = String(getTodayString())
+        forecastParser.loadData()
         jsonParser.loadData(city: userCityName, country: userCountryName)
         run(after: 1){
+            
+            self.forecastArray = self.forecastParser.forecastArray
+            print(self.forecastArray)
+            self.tableView.reloadData()
+            print("reloaded")
+            
             if(self.jsonParser.responseCode == 200){
             self.tempLabel.text = String(self.jsonParser.temperature) + "°C"
             self.humidityLabel.text = String(self.jsonParser.humidity) + "%"
@@ -79,6 +90,9 @@ class WeatherViewController: UIViewController {
     @IBAction func onBackPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func testTapped(_ sender: Any) {
+        forecastParser.loadData()
+    }
     
     func itemsRadius(){
         cityNameBlurEffect.layer.cornerRadius = 10
@@ -114,5 +128,26 @@ class WeatherViewController: UIViewController {
 
         return today_string
     }
+    
+}
+
+extension WeatherViewController: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return forecastArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+        cell.backgroundColor = UIColor.clear
+        cell.textLabel!.numberOfLines = 3
+        
+        cell.textLabel?.text = forecastArray[indexPath.row].icon
+
+        let forecast = forecastArray[indexPath.row].icon
+        cell.textLabel?.text = forecast
+        print("tableView")
+        return cell
+    }
+    
     
 }
