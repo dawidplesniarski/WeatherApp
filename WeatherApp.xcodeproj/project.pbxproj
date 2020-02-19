@@ -15,6 +15,8 @@
 		6F20308F2387300B00707C4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F20308D2387300B00707C4B /* LaunchScreen.storyboard */; };
 		6F8F9F9D238892DF0000BB26 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8F9F9C238892DF0000BB26 /* WeatherViewController.swift */; };
 		6FA51E4B23FD763900160A77 /* ForecastParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA51E4A23FD763900160A77 /* ForecastParser.swift */; };
+		6FA51E5123FD97C100160A77 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FA51E5023FD97C100160A77 /* keys.plist */; };
+		6FA51E5323FD9EA500160A77 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA51E5223FD9EA500160A77 /* TableViewCell.swift */; };
 		6FB5A5A2238963F4000F2CC5 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB5A5A1238963F4000F2CC5 /* JsonParser.swift */; };
 		ADC9BB4422F52661D89782F0 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC550AA918A219A39B94CF5 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
@@ -33,6 +35,8 @@
 		6FA51E4A23FD763900160A77 /* ForecastParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastParser.swift; sourceTree = "<group>"; };
 		6FA51E4C23FD7EEE00160A77 /* MontserratAlternates-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MontserratAlternates-Thin.otf"; path = "../../../montserrat/MontserratAlternates-Thin.otf"; sourceTree = "<group>"; };
 		6FA51E4D23FD7F0700160A77 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.otf"; path = "../../../montserrat/Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		6FA51E5023FD97C100160A77 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
+		6FA51E5223FD9EA500160A77 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		6FB5A5A1238963F4000F2CC5 /* JsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 		8CC550AA918A219A39B94CF5 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BA8DF0136EB7BDDDD5FCDC /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,10 +89,12 @@
 				6F8F9F9C238892DF0000BB26 /* WeatherViewController.swift */,
 				6FB5A5A1238963F4000F2CC5 /* JsonParser.swift */,
 				6FA51E4A23FD763900160A77 /* ForecastParser.swift */,
+				6FA51E5223FD9EA500160A77 /* TableViewCell.swift */,
 				6F2030882387300A00707C4B /* Main.storyboard */,
 				6F20308B2387300B00707C4B /* Assets.xcassets */,
 				6F20308D2387300B00707C4B /* LaunchScreen.storyboard */,
 				6F2030902387300B00707C4B /* Info.plist */,
+				6FA51E5023FD97C100160A77 /* keys.plist */,
 				6F816486239078F100B14B49 /* Fonts */,
 			);
 			path = WeatherApp;
@@ -171,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FA51E5123FD97C100160A77 /* keys.plist in Resources */,
 				6F20308F2387300B00707C4B /* LaunchScreen.storyboard in Resources */,
 				6F20308C2387300B00707C4B /* Assets.xcassets in Resources */,
 				6F20308A2387300A00707C4B /* Main.storyboard in Resources */,
@@ -214,6 +221,7 @@
 				6FB5A5A2238963F4000F2CC5 /* JsonParser.swift in Sources */,
 				6F8F9F9D238892DF0000BB26 /* WeatherViewController.swift in Sources */,
 				6F2030832387300A00707C4B /* AppDelegate.swift in Sources */,
+				6FA51E5323FD9EA500160A77 /* TableViewCell.swift in Sources */,
 				6F2030852387300A00707C4B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

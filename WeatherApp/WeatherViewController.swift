@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class WeatherViewController: UIViewController {
     
     @IBOutlet weak var tempLabel: UILabel!
@@ -23,6 +24,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var humidityBlurEffect: UIVisualEffectView!
     @IBOutlet weak var pressureBlurEffect: UIVisualEffectView!
     @IBOutlet weak var iconBlurEffect: UIVisualEffectView!
+    @IBOutlet weak var tableViewBlurEffect: UIVisualEffectView!
     @IBOutlet weak var descriptionBlurEffect: UIVisualEffectView!
     @IBOutlet weak var backButtonBlurEffect: UIVisualEffectView!
     @IBOutlet weak var timeBlurEffect: UIVisualEffectView!
@@ -44,7 +46,7 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         itemsRadius()
         timeLabel.text = String(getTodayString())
-        forecastParser.loadData()
+        forecastParser.loadData(city: userCityName, country: userCountryName)
         jsonParser.loadData(city: userCityName, country: userCountryName)
         run(after: 1){
             
@@ -90,9 +92,6 @@ class WeatherViewController: UIViewController {
     @IBAction func onBackPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func testTapped(_ sender: Any) {
-        forecastParser.loadData()
-    }
     
     func itemsRadius(){
         cityNameBlurEffect.layer.cornerRadius = 10
@@ -111,6 +110,8 @@ class WeatherViewController: UIViewController {
         backButtonBlurEffect.clipsToBounds = true
         timeBlurEffect.layer.cornerRadius = 10
         timeBlurEffect.clipsToBounds = true
+        tableViewBlurEffect.layer.cornerRadius = 10
+        tableViewBlurEffect.clipsToBounds = true
     }
     
     func getTodayString() -> String{
@@ -137,15 +138,16 @@ extension WeatherViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        cell.backgroundColor = UIColor.clear
-        cell.textLabel!.numberOfLines = 3
-        
-        cell.textLabel?.text = forecastArray[indexPath.row].icon
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! TableViewCell
+        tableView.rowHeight = 93
+        let imageName = forecastArray[indexPath.row].icon
+        let temp = forecastArray[indexPath.row].temp
+        let description = forecastArray[indexPath.row].description
+              
+        cell.iconView.image = UIImage(named: imageName)
+        cell.tempLabel.text = String(temp)
+        cell.descriptionLabel.text = description
 
-        let forecast = forecastArray[indexPath.row].icon
-        cell.textLabel?.text = forecast
-        print("tableView")
         return cell
     }
     
