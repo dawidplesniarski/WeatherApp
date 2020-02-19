@@ -190,7 +190,7 @@
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A55-ft-eGh">
-                                <rect key="frame" x="132" y="450" width="150" height="50"/>
+                                <rect key="frame" x="132" y="380" width="150" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="EuO-e9-I61">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
@@ -244,13 +244,32 @@
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vY-ZU-7gv">
-                                <rect key="frame" x="184" y="749" width="46" height="30"/>
+                                <rect key="frame" x="83" y="866" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="testTapped:" destination="CJV-tx-gff" eventType="primaryActionTriggered" id="4UV-HQ-7sS"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Use-Yx-hUl">
+                                <rect key="frame" x="54" y="438" width="307" height="382"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LabelCell" id="nMh-be-8sr">
+                                        <rect key="frame" x="0.0" y="28" width="307" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nMh-be-8sr" id="4Pi-2e-shd">
+                                            <rect key="frame" x="0.0" y="0.0" width="307" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="CJV-tx-gff" id="9q4-jC-3bP"/>
+                                    <outlet property="delegate" destination="CJV-tx-gff" id="fwg-dA-m8n"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CbA-rg-XOr"/>
@@ -267,6 +286,7 @@
                         <outlet property="iconBlurEffect" destination="txL-Hc-XUK" id="gTB-83-tI0"/>
                         <outlet property="pressureBlurEffect" destination="rYp-eM-h4J" id="s1b-BG-qdu"/>
                         <outlet property="pressureLabel" destination="8Pm-EU-Czl" id="hq4-rU-Anm"/>
+                        <outlet property="tableView" destination="Use-Yx-hUl" id="Spq-NQ-uLi"/>
                         <outlet property="tempBlurEffect" destination="1oF-Vm-fd7" id="rdP-yF-a4I"/>
                         <outlet property="tempLabel" destination="pN0-2x-1uK" id="uk2-dh-glf"/>
                         <outlet property="timeBlurEffect" destination="i2Z-K0-rW9" id="fUl-6u-VS8"/>

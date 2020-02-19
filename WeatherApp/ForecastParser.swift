@@ -30,6 +30,8 @@ struct WeatherForArray: Codable {
 
 
 class ForecastParser: UIViewController {
+    
+    var forecastArray:[(temp:Double,icon:String,description:String)] = []
 
     func loadData(){
         let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?q=Brzesko,PL&cnt=3&units=metric&APPID=89c55460ad37b6b6165aef516adae10a"
@@ -41,21 +43,26 @@ class ForecastParser: UIViewController {
                 let weatherObj = try JSONDecoder().decode(Forecast.self, from: data)
                 
                 for weatherCounter in weatherObj.list {
-                    print(weatherCounter.main.temp)
                 
                     for weatherCounterNested in weatherCounter.weather{
-                        print(weatherCounterNested.icon)
-                        print(weatherCounterNested.main)
+                        
+                        self.forecastArray.append((
+                            temp: weatherCounter.main.temp,
+                            icon: weatherCounterNested.icon,
+                            description: weatherCounterNested.main
+                        ))
                     }
                 }
                 
-
+                //print(self.forecastArray)
+                                
                 
             }catch let jsonErr{
                 print(jsonErr)
             }
         }.resume()
     }
+
 
     
 }
