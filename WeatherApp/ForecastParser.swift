@@ -34,7 +34,7 @@ class ForecastParser: UIViewController {
     var forecastArray:[(temp:Double,icon:String,description:String)] = []
 
     func loadData(){
-        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?q=Brzesko,PL&cnt=3&units=metric&APPID=89c55460ad37b6b6165aef516adae10a"
+        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?q=Brzesko,PL&cnt=10&units=metric&APPID=\(getApiKey())"
         guard let url = URL(string: jsonUrlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
@@ -54,7 +54,6 @@ class ForecastParser: UIViewController {
                     }
                 }
                 
-                //print(self.forecastArray)
                                 
                 
             }catch let jsonErr{
@@ -63,6 +62,10 @@ class ForecastParser: UIViewController {
         }.resume()
     }
 
-
-    
+    func getApiKey() -> String {
+      let filePath = Bundle.main.path(forResource: "keys", ofType: "plist")
+      let plist = NSDictionary(contentsOfFile:filePath!)
+      let value = plist?.object(forKey: "apiKey") as! String
+      return value
+    }
 }

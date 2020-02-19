@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class WeatherViewController: UIViewController {
     
     @IBOutlet weak var tempLabel: UILabel!
@@ -137,15 +138,15 @@ extension WeatherViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        cell.backgroundColor = UIColor.clear
-        cell.textLabel!.numberOfLines = 3
-        
-        cell.textLabel?.text = forecastArray[indexPath.row].icon
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! TableViewCell
+        let imageName = forecastArray[indexPath.row].icon
+        let temp = forecastArray[indexPath.row].temp
+        let description = forecastArray[indexPath.row].description
+              
+        cell.iconView.image = UIImage(named: imageName)
+        cell.tempLabel.text = String(temp)
+        cell.descriptionLabel.text = description
 
-        let forecast = forecastArray[indexPath.row].icon
-        cell.textLabel?.text = forecast
-        print("tableView")
         return cell
     }
     
