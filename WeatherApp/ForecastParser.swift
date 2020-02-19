@@ -12,14 +12,15 @@ struct Forecast: Codable{
     let list: [ForecastArray]
 }
 
-struct MainForecast: Codable{
-    let temp:Double
-}
-
 struct ForecastArray: Codable {
     let main:MainForecast
     let weather: [WeatherForArray]
 }
+
+struct MainForecast: Codable{
+    let temp:Double
+}
+
 
 struct WeatherForArray: Codable {
     let main: String
@@ -31,7 +32,7 @@ struct WeatherForArray: Codable {
 class ForecastParser: UIViewController {
 
     func loadData(){
-        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?q=Brzesko,PL&cnt=1&units=metric&APPID=89c55460ad37b6b6165aef516adae10a"
+        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?q=Brzesko,PL&cnt=3&units=metric&APPID=89c55460ad37b6b6165aef516adae10a"
         guard let url = URL(string: jsonUrlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
@@ -41,7 +42,13 @@ class ForecastParser: UIViewController {
                 
                 for weatherCounter in weatherObj.list {
                     print(weatherCounter.main.temp)
+                
+                    for weatherCounterNested in weatherCounter.weather{
+                        print(weatherCounterNested.icon)
+                        print(weatherCounterNested.main)
+                    }
                 }
+                
 
                 
             }catch let jsonErr{
