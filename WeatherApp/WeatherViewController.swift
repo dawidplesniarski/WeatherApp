@@ -35,11 +35,13 @@ class WeatherViewController: UIViewController {
     let numberToMonth = [1:"January",2:"February",3:"March",4:"April",5:"May",6:"June",7:"July",8:"August",9:"September",10:"October",11:"November",12:"Decenmber"]
     var currentDate:String = ""
     let jsonParser = JsonParser()
+    let forecastParser = ForecastParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         itemsRadius()
         timeLabel.text = String(getTodayString())
+        forecastParser.loadData()
         jsonParser.loadData(city: userCityName, country: userCountryName)
         run(after: 1){
             if(self.jsonParser.responseCode == 200){
@@ -78,6 +80,9 @@ class WeatherViewController: UIViewController {
     
     @IBAction func onBackPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func testTapped(_ sender: Any) {
+        forecastParser.loadData()
     }
     
     func itemsRadius(){
