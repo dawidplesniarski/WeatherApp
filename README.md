@@ -1,5 +1,5 @@
 # WeatherApp
-An iOS weather application. <br>
+An iOS weather application with daily forecast. <br>
 Api used in application: openweathermap.org
 
 <p align="center">
