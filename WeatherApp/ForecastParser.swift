@@ -33,8 +33,8 @@ class ForecastParser: UIViewController {
     
     var forecastArray:[(temp:Double,icon:String,description:String)] = []
 
-    func loadData(){
-        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?q=Brzesko,PL&cnt=10&units=metric&APPID=\(getApiKey())"
+    func loadData(city:String, country:String){
+        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?q=\(city),\(country)&cnt=10&units=metric&APPID=\(getApiKey())"
         guard let url = URL(string: jsonUrlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
